@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { BookOpen } from "lucide-react";
-import ChatBot from "@/components/ChatBot";
+import { Link } from "react-router-dom";
 
 const StudyMaterials = () => {
   const materials = [
@@ -81,11 +81,11 @@ const StudyMaterials = () => {
               <span className="ml-2 text-gray-600">Telugu Youth Citizens</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
-              <a href="/courses" className="text-gray-700 hover:text-blue-600 transition-colors">Courses</a>
-              <a href="/study-materials" className="text-blue-600 font-medium">Study Materials</a>
-              <a href="/career-guidance" className="text-gray-700 hover:text-blue-600 transition-colors">Career Guidance</a>
-              <a href="/applications" className="text-gray-700 hover:text-blue-600 transition-colors">Applications</a>
+              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
+              <Link to="/courses" className="text-gray-700 hover:text-blue-600 transition-colors">Courses</Link>
+              <Link to="/study-materials" className="text-blue-600 font-medium">Study Materials</Link>
+              <Link to="/career-guidance" className="text-gray-700 hover:text-blue-600 transition-colors">Career Guidance</Link>
+              <Link to="/applications" className="text-gray-700 hover:text-blue-600 transition-colors">Applications</Link>
             </div>
             <div className="flex space-x-4">
               <Button variant="outline">Login</Button>
@@ -172,9 +172,6 @@ const StudyMaterials = () => {
           </div>
         </div>
       </section>
-
-      {/* TYC Assistant Chatbot */}
-      <ChatBot />
     </div>
   );
 };

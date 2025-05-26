@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { Send, Bot, User } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -13,7 +13,6 @@ interface Message {
 }
 
 const ChatBot = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -103,59 +102,49 @@ const ChatBot = () => {
   };
 
   return (
-    <>
-      {/* Floating Chat Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        {!isOpen && (
-          <Button
-            onClick={() => setIsOpen(true)}
-            className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg"
-            size="icon"
-          >
-            <MessageCircle className="w-6 h-6" />
-          </Button>
-        )}
-      </div>
-
-      {/* Chat Window */}
-      {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-80 h-96 bg-white rounded-lg shadow-2xl border">
-          <Card className="h-full flex flex-col">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 bg-blue-600 text-white rounded-t-lg">
-              <CardTitle className="text-sm font-medium">TYC Assistant</CardTitle>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsOpen(false)}
-                className="h-6 w-6 text-white hover:bg-blue-700"
-              >
-                <X className="w-4 h-4" />
-              </Button>
+    <section className="py-20 bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h3 className="text-4xl font-bold text-white mb-4">
+            TYC Chatbot Assistant
+          </h3>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Get instant answers about our courses, study materials, career guidance, and services. Our AI assistant is here to help you 24/7.
+          </p>
+        </div>
+        
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-white shadow-2xl h-96">
+            <CardHeader className="bg-blue-600 text-white rounded-t-lg">
+              <CardTitle className="flex items-center gap-2">
+                <Bot className="w-6 h-6" />
+                TYC Assistant
+              </CardTitle>
             </CardHeader>
             
-            <CardContent className="flex-1 flex flex-col p-0">
+            <CardContent className="flex flex-col h-80 p-0">
               {/* Messages Area */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-3">
+              <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {messages.map((message) => (
                   <div
                     key={message.id}
                     className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[80%] p-3 rounded-lg ${
+                      className={`max-w-[80%] p-4 rounded-lg ${
                         message.sender === 'user'
                           ? 'bg-blue-600 text-white'
                           : 'bg-gray-100 text-gray-900'
                       }`}
                     >
-                      <div className="flex items-start space-x-2">
+                      <div className="flex items-start space-x-3">
                         {message.sender === 'bot' && (
-                          <Bot className="w-4 h-4 mt-1 text-blue-600" />
+                          <Bot className="w-5 h-5 mt-1 text-blue-600" />
                         )}
                         {message.sender === 'user' && (
-                          <User className="w-4 h-4 mt-1 text-white" />
+                          <User className="w-5 h-5 mt-1 text-white" />
                         )}
-                        <p className="text-sm">{message.text}</p>
+                        <p className="text-sm leading-relaxed">{message.text}</p>
                       </div>
                     </div>
                   </div>
@@ -164,16 +153,16 @@ const ChatBot = () => {
               </div>
 
               {/* Input Area */}
-              <div className="p-4 border-t">
-                <div className="flex space-x-2">
+              <div className="p-6 border-t bg-gray-50">
+                <div className="flex space-x-3">
                   <Input
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Ask me anything about TYC..."
-                    className="flex-1"
+                    placeholder="Ask me anything about TYC services..."
+                    className="flex-1 bg-white"
                   />
-                  <Button onClick={handleSendMessage} size="icon">
+                  <Button onClick={handleSendMessage} className="bg-blue-600 hover:bg-blue-700">
                     <Send className="w-4 h-4" />
                   </Button>
                 </div>
@@ -181,8 +170,8 @@ const ChatBot = () => {
             </CardContent>
           </Card>
         </div>
-      )}
-    </>
+      </div>
+    </section>
   );
 };
 

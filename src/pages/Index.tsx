@@ -17,7 +17,7 @@ const Index = () => {
               <span className="ml-2 text-gray-600">Telugu Youth Citizens</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 transition-colors">Home</Link>
+              <Link to="/" className="text-blue-600 font-medium">Home</Link>
               <Link to="/courses" className="text-gray-700 hover:text-blue-600 transition-colors">Courses</Link>
               <Link to="/study-materials" className="text-gray-700 hover:text-blue-600 transition-colors">Study Materials</Link>
               <Link to="/career-guidance" className="text-gray-700 hover:text-blue-600 transition-colors">Career Guidance</Link>
@@ -161,6 +161,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Application Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -212,6 +213,10 @@ const Index = () => {
         </div>
       </section>
 
+      {/* TYC Chatbot Section */}
+      <ChatBot />
+
+      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-4xl font-bold text-white mb-4">
@@ -231,6 +236,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
@@ -252,8 +258,8 @@ const Index = () => {
               <h5 className="font-semibold mb-4">Services</h5>
               <ul className="space-y-2 text-gray-400">
                 <li><Link to="/applications" className="hover:text-white transition-colors">Application Services</Link></li>
-                <li><Link to="/internships" className="hover:text-white transition-colors">Internships</Link></li>
-                <li><Link to="/jobs" className="hover:text-white transition-colors">Job Opportunities</Link></li>
+                <li><a href="#" className="hover:text-white transition-colors">Internships</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Job Opportunities</a></li>
               </ul>
             </div>
             <div>
@@ -270,9 +276,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-
-      {/* TYC Assistant Chatbot */}
-      <ChatBot />
     </div>
   );
 };
