@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { BookOpen } from "lucide-react";
+import ChatBot from "@/components/ChatBot";
 
 const StudyMaterials = () => {
   const materials = [
@@ -94,7 +95,6 @@ const StudyMaterials = () => {
         </div>
       </nav>
 
-      {/* Header */}
       <section className="bg-gradient-to-r from-green-600 to-blue-600 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">
@@ -112,7 +112,6 @@ const StudyMaterials = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
@@ -136,7 +135,6 @@ const StudyMaterials = () => {
         </div>
       </section>
 
-      {/* Materials Grid */}
       <section className="pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -174,6 +172,9 @@ const StudyMaterials = () => {
           </div>
         </div>
       </section>
+
+      {/* TYC Assistant Chatbot */}
+      <ChatBot />
     </div>
   );
 };

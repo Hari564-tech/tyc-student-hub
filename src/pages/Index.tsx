@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookOpen, Laptop, User, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import ChatBot from "@/components/ChatBot";
 
 const Index = () => {
   return (
@@ -160,7 +161,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Application Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -212,7 +212,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-4xl font-bold text-white mb-4">
@@ -232,7 +231,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
@@ -272,6 +270,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* TYC Assistant Chatbot */}
+      <ChatBot />
     </div>
   );
 };
