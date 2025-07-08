@@ -8,15 +8,18 @@ const Courses = () => {
   const courses = [
     {
       id: 1,
-      title: "Python Programming Fundamentals",
-      description: "Learn Python from basics to advanced concepts with hands-on projects",
+      title: "Python Programming Complete Course",
+      description: "Master Python from basics to advanced concepts including Data Structures & Algorithms",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
-      duration: "8 weeks",
-      level: "Beginner",
-      price: "₹2,999",
-      rating: 4.8,
-      students: 1500,
-      category: "Programming"
+      duration: "10 weeks",
+      level: "Beginner to Advanced",
+      price: "₹2,000",
+      originalPrice: "₹2,999",
+      rating: 4.9,
+      students: 1800,
+      category: "Programming",
+      topics: ["Basic Python", "Advanced Python", "DSA in Python"],
+      isNew: true
     },
     {
       id: 2,
@@ -119,6 +122,30 @@ const Courses = () => {
         </div>
       </section>
 
+      {/* New Course Announcement */}
+      <section className="py-8 bg-gradient-to-r from-green-500 to-blue-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="bg-white rounded-xl p-6 shadow-lg">
+            <Badge className="mb-4 bg-red-500 text-white text-lg px-4 py-2">NEW LAUNCH</Badge>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              🐍 Python Programming Complete Course - Now Live!
+            </h2>
+            <p className="text-xl text-gray-700 mb-4">
+              Special Launch Price: <span className="text-2xl font-bold text-green-600">₹2,000</span>
+              <span className="text-lg text-gray-500 line-through ml-2">₹2,999</span>
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              <Badge variant="outline" className="bg-blue-50">Basic Python</Badge>
+              <Badge variant="outline" className="bg-purple-50">Advanced Python</Badge>
+              <Badge variant="outline" className="bg-green-50">DSA in Python</Badge>
+            </div>
+            <Button size="lg" className="bg-green-600 hover:bg-green-700">
+              Enroll Now - Limited Time Offer!
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Filters */}
       <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,7 +168,7 @@ const Courses = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course) => (
-              <Card key={course.id} className="hover:shadow-lg transition-shadow overflow-hidden">
+              <Card key={course.id} className={`hover:shadow-lg transition-shadow overflow-hidden ${course.isNew ? 'ring-2 ring-green-500' : ''}`}>
                 <div className="relative">
                   <img 
                     src={course.image} 
@@ -151,16 +178,34 @@ const Courses = () => {
                   <Badge className="absolute top-4 left-4 bg-white text-gray-900">
                     {course.category}
                   </Badge>
+                  {course.isNew && (
+                    <Badge className="absolute top-4 right-4 bg-red-500 text-white">
+                      NEW!
+                    </Badge>
+                  )}
                 </div>
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant="outline">{course.level}</Badge>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-blue-600">{course.price}</div>
+                      {course.originalPrice && (
+                        <div className="text-sm text-gray-500 line-through">{course.originalPrice}</div>
+                      )}
                     </div>
                   </div>
                   <CardTitle className="text-xl">{course.title}</CardTitle>
                   <CardDescription>{course.description}</CardDescription>
+                  
+                  {course.topics && (
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {course.topics.map((topic, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {topic}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
                 </CardHeader>
                 <CardContent>
                   <div className="flex justify-between items-center mb-4 text-sm text-gray-600">
@@ -168,7 +213,9 @@ const Courses = () => {
                     <span>{course.students} students</span>
                     <span>{course.duration}</span>
                   </div>
-                  <Button className="w-full">Enroll Now</Button>
+                  <Button className={`w-full ${course.isNew ? 'bg-green-600 hover:bg-green-700' : ''}`}>
+                    {course.isNew ? 'Enroll Now - Special Price!' : 'Enroll Now'}
+                  </Button>
                 </CardContent>
               </Card>
             ))}

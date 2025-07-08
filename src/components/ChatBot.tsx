@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -16,7 +15,7 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! I\'m TYC Assistant. I can help you with programming languages, technical subjects, courses, study materials, applications, and career guidance. Ask me about Python, Java, JavaScript, C++, Data Science, Web Development, or any other technical topic!',
+      text: '🚀 EXCITING NEWS! We just launched our Python Programming Complete Course for only ₹2,000 (regular price ₹2,999)!\n\nCourse includes:\n✅ Basic Python Programming\n✅ Advanced Python Concepts\n✅ Data Structures & Algorithms in Python\n✅ 10 weeks of comprehensive training\n✅ Hands-on projects and assignments\n\nThis is a limited-time launch offer! Ask me about Python or any other programming language, technical subjects, courses, study materials, applications, and career guidance.',
       sender: 'bot',
       timestamp: new Date()
     }
@@ -35,9 +34,9 @@ const ChatBot = () => {
   const getBotResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
 
-    // Programming Languages - Python
+    // Programming Languages - Python (Updated with new course info)
     if (message.includes('python') || message.includes('py')) {
-      return 'Python is perfect for beginners! TYC offers comprehensive Python courses covering:\n\n• Basics: Variables, data types, loops, functions\n• Advanced: OOP, file handling, error handling\n• Libraries: NumPy, Pandas, Matplotlib\n• Applications: Web development (Django/Flask), Data Science, AI/ML\n• Projects: Real-world applications and portfolio building\n\nOur Python course is ₹2,999 for 8 weeks with hands-on projects!';
+      return '🐍 GREAT NEWS! We just launched our Python Programming Complete Course!\n\n🎉 **SPECIAL LAUNCH OFFER: ₹2,000 only** (Regular price: ₹2,999)\n\n📚 **Course Coverage:**\n• **Basic Python:** Variables, data types, loops, functions, file handling\n• **Advanced Python:** OOP, decorators, generators, exception handling\n• **DSA in Python:** Arrays, linked lists, stacks, queues, trees, graphs, sorting algorithms\n• **Libraries:** NumPy, Pandas, Matplotlib basics\n• **Projects:** Real-world applications and portfolio building\n\n⏰ **Duration:** 10 weeks with hands-on practice\n🎓 **Level:** Beginner to Advanced\n👥 **Already enrolled:** 1800+ students\n⭐ **Rating:** 4.9/5\n\n🔥 This is a limited-time launch price! Perfect for beginners and those wanting to master DSA concepts.';
     }
 
     // Java Programming
@@ -112,7 +111,7 @@ const ChatBot = () => {
 
     // Course and pricing queries
     if (message.includes('course') || message.includes('programming') || message.includes('learn coding')) {
-      return 'TYC offers comprehensive courses in all major programming languages and technologies:\n\n🐍 Python (₹2,999) - 8 weeks\n☕ Java Full Stack (₹4,999) - 12 weeks\n🌐 Web Development (₹5,999) - 16 weeks\n📊 Data Science (₹6,999) - 14 weeks\n📱 Mobile Development (₹4,499) - 12 weeks\n🛡️ Cybersecurity (₹6,499) - 14 weeks\n\nAll courses include projects, certifications, and placement assistance!';
+      return '🚀 TYC offers comprehensive courses in all major programming languages and technologies:\n\n🔥 **NEW LAUNCH - SPECIAL OFFER:**\n🐍 Python Complete Course (₹2,000) - Basic + Advanced + DSA - 10 weeks\n\n**Other Popular Courses:**\n☕ Java Full Stack (₹4,999) - 12 weeks\n🌐 Web Development (₹5,999) - 16 weeks\n📊 Data Science (₹6,999) - 14 weeks\n📱 Mobile Development (₹4,499) - 12 weeks\n🛡️ Cybersecurity (₹6,499) - 14 weeks\n🎯 Career Guidance (₹1,999) - 6 weeks\n\nAll courses include projects, certifications, and placement assistance!';
     }
 
     // Study materials queries
@@ -136,7 +135,7 @@ const ChatBot = () => {
     }
 
     // Default response
-    return 'I\'m here to help with all your technical and academic queries! I can assist with:\n\n💻 Programming: Python, Java, JavaScript, C++, and more\n📊 Data Science, AI/ML, and Analytics\n🌐 Web Development and Mobile Apps\n🛡️ Cybersecurity and DevOps\n📚 Study Materials for Engineering subjects\n🎯 Career guidance and interview preparation\n💼 Application assistance for exams and jobs\n\nPlease ask me about any specific programming language, course, or technical topic you\'re interested in!';
+    return 'I\'m here to help with all your technical and academic queries! I can assist with:\n\n💻 Programming: Python, Java, JavaScript, C++, and more\n📊 Data Science, AI/ML, and Analytics\n🌐 Web Development and Mobile Apps\n🛡️ Cybersecurity and DevOps\n📚 Study Materials for Engineering subjects\n🎯 Career guidance and interview preparation\n💼 Application assistance for exams and jobs\n\n🔥 **Don\'t miss our NEW Python Course launch offer - ₹2,000 only!**\n\nPlease ask me about any specific programming language, course, or technical topic you\'re interested in!';
   };
 
   const handleSendMessage = () => {
@@ -224,7 +223,7 @@ const ChatBot = () => {
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Ask about Python, Java, Web Development, Data Science, or any programming topic..."
+                    placeholder="Ask about our NEW Python course or any programming topic..."
                     className="flex-1 bg-white"
                   />
                   <Button onClick={handleSendMessage} className="bg-blue-600 hover:bg-blue-700">
