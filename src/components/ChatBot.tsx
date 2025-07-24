@@ -2,8 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Send, Bot, User, Key, Settings } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Send, Bot, User } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -16,15 +15,12 @@ const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: '🚀 EXCITING NEWS! We just launched our Python Programming Complete Course for only ₹2,000 (regular price ₹2,999)!\n\nCourse includes:\n✅ Basic Python Programming\n✅ Advanced Python Concepts\n✅ Data Structures & Algorithms in Python\n✅ 10 weeks of comprehensive training\n✅ Hands-on projects and assignments\n\nThis is a limited-time launch offer! Ask me about Python or any other programming language, technical subjects, courses, study materials, applications, and career guidance.\n\n🤖 Enhanced with AI: I can now provide more intelligent and detailed responses!',
+      text: '🚀 EXCITING NEWS! We just launched our Python Programming Complete Course for only ₹2,000 (regular price ₹2,999)!\n\nCourse includes:\n✅ Basic Python Programming\n✅ Advanced Python Concepts\n✅ Data Structures & Algorithms in Python\n✅ 10 weeks of comprehensive training\n✅ Hands-on projects and assignments\n\nThis is a limited-time launch offer! Ask me about Python or any other programming language, technical subjects, courses, study materials, applications, and career guidance.',
       sender: 'bot',
       timestamp: new Date()
     }
   ]);
   const [inputMessage, setInputMessage] = useState('');
-  const [apiKey, setApiKey] = useState(localStorage.getItem('gemini-api-key') || '');
-  const [showApiDialog, setShowApiDialog] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -35,54 +31,7 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const callGeminiAPI = async (userMessage: string): Promise<string> => {
-    if (!apiKey) {
-      return "🔑 Please set up your Gemini API key in settings to use AI-enhanced responses!";
-    }
-
-    try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: `You are TYC (Telugu Youth Citizens) Technical Assistant. You help with programming languages, technical subjects, career guidance, and courses. Our current offerings include:
-
-NEW LAUNCH: Python Complete Course - ₹2,000 (Basic + Advanced + DSA)
-- Java Full Stack: ₹4,999
-- Web Development: ₹5,999  
-- Data Science: ₹6,999
-- Mobile Development: ₹4,499
-- Cybersecurity: ₹6,499
-- Career Guidance: ₹1,999
-
-Study materials: ₹99-299 per subject
-Application assistance: ₹50 per form
-
-Always promote our courses when relevant. Be helpful, technical, and professional.
-
-User question: ${userMessage}`
-            }]
-          }]
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.candidates?.[0]?.content?.parts?.[0]?.text || getFallbackResponse(userMessage);
-    } catch (error) {
-      console.error('Gemini API error:', error);
-      return getFallbackResponse(userMessage);
-    }
-  };
-
-  const getFallbackResponse = (userMessage: string): string => {
+  const getBotResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
 
     // Programming Languages - Python (Updated with new course info)
@@ -189,7 +138,7 @@ User question: ${userMessage}`
     return 'I\'m here to help with all your technical and academic queries! I can assist with:\n\n💻 Programming: Python, Java, JavaScript, C++, and more\n📊 Data Science, AI/ML, and Analytics\n🌐 Web Development and Mobile Apps\n🛡️ Cybersecurity and DevOps\n📚 Study Materials for Engineering subjects\n🎯 Career guidance and interview preparation\n💼 Application assistance for exams and jobs\n\n🔥 **Don\'t miss our NEW Python Course launch offer - ₹2,000 only!**\n\nPlease ask me about any specific programming language, course, or technical topic you\'re interested in!';
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = () => {
     if (!inputMessage.trim()) return;
 
     const userMessage: Message = {
@@ -199,39 +148,15 @@ User question: ${userMessage}`
       timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    const botResponse: Message = {
+      id: (Date.now() + 1).toString(),
+      text: getBotResponse(inputMessage),
+      sender: 'bot',
+      timestamp: new Date()
+    };
+
+    setMessages(prev => [...prev, userMessage, botResponse]);
     setInputMessage('');
-    setIsLoading(true);
-
-    try {
-      const botResponseText = apiKey ? 
-        await callGeminiAPI(inputMessage) : 
-        getFallbackResponse(inputMessage);
-
-      const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: botResponseText,
-        sender: 'bot',
-        timestamp: new Date()
-      };
-
-      setMessages(prev => [...prev, botResponse]);
-    } catch (error) {
-      const errorResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        text: "Sorry, I encountered an error. Please try again.",
-        sender: 'bot',
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorResponse]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const saveApiKey = () => {
-    localStorage.setItem('gemini-api-key', apiKey);
-    setShowApiDialog(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -255,48 +180,9 @@ User question: ${userMessage}`
         <div className="max-w-4xl mx-auto">
           <Card className="bg-white shadow-2xl h-[500px]">
             <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
-              <CardTitle className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Bot className="w-6 h-6" />
-                  TYC Technical Assistant - AI Enhanced {apiKey ? '🤖' : ''}
-                </div>
-                
-                <Dialog open={showApiDialog} onOpenChange={setShowApiDialog}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-blue-600">
-                      <Settings className="w-4 h-4 mr-2" />
-                      {apiKey ? 'AI Enabled' : 'Enable AI'}
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Configure Gemini AI</DialogTitle>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <p className="text-sm text-gray-600">
-                        Enter your Google Gemini API key to enable AI-enhanced responses:
-                      </p>
-                      <Input
-                        type="password"
-                        placeholder="Your Gemini API key..."
-                        value={apiKey}
-                        onChange={(e) => setApiKey(e.target.value)}
-                      />
-                      <div className="flex gap-2">
-                        <Button onClick={saveApiKey} className="flex-1">
-                          <Key className="w-4 h-4 mr-2" />
-                          Save API Key
-                        </Button>
-                        <Button variant="outline" onClick={() => setShowApiDialog(false)}>
-                          Cancel
-                        </Button>
-                      </div>
-                      <p className="text-xs text-gray-500">
-                        Your API key is stored locally and never shared.
-                      </p>
-                    </div>
-                  </DialogContent>
-                </Dialog>
+              <CardTitle className="flex items-center gap-2">
+                <Bot className="w-6 h-6" />
+                TYC Technical Assistant - All Programming Languages & Subjects
               </CardTitle>
             </CardHeader>
             
@@ -327,18 +213,6 @@ User question: ${userMessage}`
                     </div>
                   </div>
                 ))}
-                
-                {isLoading && (
-                  <div className="flex justify-start">
-                    <div className="max-w-[85%] p-4 rounded-lg bg-gray-100 text-gray-900">
-                      <div className="flex items-start space-x-3">
-                        <Bot className="w-5 h-5 mt-1 text-blue-600 flex-shrink-0" />
-                        <p className="text-sm">🤖 AI is thinking...</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
                 <div ref={messagesEndRef} />
               </div>
 
