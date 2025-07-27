@@ -45,12 +45,16 @@ const Index = () => {
                 Your one-stop platform for academic support, technical training, career guidance, and affordable application services. Join thousands of students achieving their dreams.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-3">
-                  Start Learning Today
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-3">
-                  Explore Courses
-                </Button>
+                <Link to="/courses">
+                  <Button size="lg" className="text-lg px-8 py-3 w-full sm:w-auto">
+                    Start Learning Today
+                  </Button>
+                </Link>
+                <Link to="/courses">
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-3 w-full sm:w-auto">
+                    Explore Courses
+                  </Button>
+                </Link>
               </div>
               <div className="mt-8 flex items-center space-x-6">
                 <div className="text-center">
@@ -182,7 +186,9 @@ const Index = () => {
               <CardContent>
                 <div className="text-3xl font-bold text-gray-900 mb-2">₹50</div>
                 <div className="text-sm text-gray-600 line-through mb-4">Others charge ₹150</div>
-                <Button className="w-full">Apply Now</Button>
+                <Link to="/applications">
+                  <Button className="w-full">Apply Now</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -194,7 +200,9 @@ const Index = () => {
               <CardContent>
                 <div className="text-3xl font-bold text-gray-900 mb-2">₹50</div>
                 <div className="text-sm text-gray-600 line-through mb-4">Others charge ₹120</div>
-                <Button className="w-full">Apply Now</Button>
+                <Link to="/applications">
+                  <Button className="w-full">Apply Now</Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -206,7 +214,9 @@ const Index = () => {
               <CardContent>
                 <div className="text-3xl font-bold text-gray-900 mb-2">₹50</div>
                 <div className="text-sm text-gray-600 line-through mb-4">Others charge ₹100</div>
-                <Button className="w-full">Apply Now</Button>
+                <Link to="/applications">
+                  <Button className="w-full">Apply Now</Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -226,12 +236,16 @@ const Index = () => {
             Join thousands of students who have already started their journey towards academic excellence and career success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-              Start Free Trial
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600">
-              View All Courses
-            </Button>
+            <Link to="/courses">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-3 w-full sm:w-auto">
+                Start Free Trial
+              </Button>
+            </Link>
+            <Link to="/courses">
+              <Button size="lg" variant="outline" className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600 w-full sm:w-auto">
+                View All Courses
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
