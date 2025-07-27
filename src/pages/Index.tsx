@@ -223,6 +223,222 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Programming Courses Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-gray-900 mb-4">
+              Popular Programming Courses
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Master in-demand programming languages and frameworks with our comprehensive courses designed for beginners to advanced learners.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-white text-6xl font-bold">Py</div>
+                </div>
+                <CardTitle className="text-xl">Python Programming</CardTitle>
+                <CardDescription>Complete Python course from basics to advanced</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-2xl font-bold text-gray-900">₹2,999</span>
+                  <span className="text-sm text-gray-600">⭐ 4.8 (1,234 reviews)</span>
+                </div>
+                <ul className="text-sm text-gray-600 mb-4 space-y-1">
+                  <li>• Variables, Data Types & Control Structures</li>
+                  <li>• Object-Oriented Programming</li>
+                  <li>• Web Development with Django/Flask</li>
+                  <li>• Data Science & Machine Learning</li>
+                </ul>
+                <Link to="/courses">
+                  <Button className="w-full">Enroll Now</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-white text-4xl font-bold">Java</div>
+                </div>
+                <CardTitle className="text-xl">Java Development</CardTitle>
+                <CardDescription>Full-stack Java development course</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-2xl font-bold text-gray-900">₹3,499</span>
+                  <span className="text-sm text-gray-600">⭐ 4.7 (987 reviews)</span>
+                </div>
+                <ul className="text-sm text-gray-600 mb-4 space-y-1">
+                  <li>• Core Java Fundamentals</li>
+                  <li>• Spring Boot Framework</li>
+                  <li>• Database Integration</li>
+                  <li>• REST API Development</li>
+                </ul>
+                <Link to="/courses">
+                  <Button className="w-full">Enroll Now</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-full h-48 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-white text-4xl font-bold">JS</div>
+                </div>
+                <CardTitle className="text-xl">JavaScript & React</CardTitle>
+                <CardDescription>Modern web development with JavaScript</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-2xl font-bold text-gray-900">₹2,799</span>
+                  <span className="text-sm text-gray-600">⭐ 4.9 (1,567 reviews)</span>
+                </div>
+                <ul className="text-sm text-gray-600 mb-4 space-y-1">
+                  <li>• ES6+ JavaScript Features</li>
+                  <li>• React.js & Component Architecture</li>
+                  <li>• State Management with Redux</li>
+                  <li>• Node.js Backend Development</li>
+                </ul>
+                <Link to="/courses">
+                  <Button className="w-full">Enroll Now</Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link to="/courses">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                View All Programming Courses
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Study Materials Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl font-bold text-gray-900 mb-4">
+              Free Study Materials
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Access thousands of free study materials, important questions, and practice papers for all subjects and competitive exams.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-blue-600" />
+                </div>
+                <CardTitle className="text-lg">EAPCET Materials</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold text-blue-600 mb-2">500+</p>
+                <p className="text-sm text-gray-600 mb-4">Question Papers & Notes</p>
+                <Link to="/study-materials">
+                  <Button variant="outline" className="w-full">Browse Materials</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-green-600" />
+                </div>
+                <CardTitle className="text-lg">JEE/NEET Prep</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold text-green-600 mb-2">750+</p>
+                <p className="text-sm text-gray-600 mb-4">Practice Questions</p>
+                <Link to="/study-materials">
+                  <Button variant="outline" className="w-full">Browse Materials</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-purple-600" />
+                </div>
+                <CardTitle className="text-lg">Programming Notes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold text-purple-600 mb-2">300+</p>
+                <p className="text-sm text-gray-600 mb-4">Code Examples & Tutorials</p>
+                <Link to="/study-materials">
+                  <Button variant="outline" className="w-full">Browse Materials</Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-8 h-8 text-orange-600" />
+                </div>
+                <CardTitle className="text-lg">Previous Papers</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-3xl font-bold text-orange-600 mb-2">1000+</p>
+                <p className="text-sm text-gray-600 mb-4">Solved Question Papers</p>
+                <Link to="/study-materials">
+                  <Button variant="outline" className="w-full">Browse Materials</Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-4">
+                  Download Materials Instantly
+                </h4>
+                <p className="text-gray-600 mb-6">
+                  Get instant access to high-quality study materials prepared by experienced teachers and subject experts. All materials are free to download and updated regularly.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to="/study-materials">
+                    <Button size="lg" className="w-full sm:w-auto">Browse All Materials</Button>
+                  </Link>
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto">Request Material</Button>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <p className="text-3xl font-bold text-blue-600">2500+</p>
+                  <p className="text-sm text-gray-600">Total Downloads</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-green-600">50+</p>
+                  <p className="text-sm text-gray-600">Subjects Covered</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-purple-600">4.9</p>
+                  <p className="text-sm text-gray-600">Average Rating</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-orange-600">100%</p>
+                  <p className="text-sm text-gray-600">Free Access</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TYC Chatbot Section */}
       <ChatBot />
 
